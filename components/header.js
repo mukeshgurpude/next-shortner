@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { layout } from 'styled-system'
 import Link from './link'
 import Toggle from './toggle'
 
@@ -15,7 +14,7 @@ export default function Header() {
   const [ open, setOpen ] = useState(true)
 
   return <Wrapper>
-    <Image src='/logo.svg' alt='' height='28px' width='100%' />
+    <Image src='/logo.svg' alt='' width='150px' height='18px'/>
     <Toggle open={open} toggle={() => setOpen(c => !c)} />
     <LinkWrapper>
       <ul>{ links.map((link, i) => <Link key={i} {...link} />) }</ul>
@@ -27,5 +26,17 @@ export default function Header() {
   </Wrapper>
 }
 
-const Wrapper = styled.header``
-const LinkWrapper = styled.div``
+const Wrapper = styled.header`
+  display: flex;
+`
+const LinkWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  &>ul {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+  }
+`

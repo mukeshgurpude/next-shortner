@@ -1,6 +1,6 @@
 /**@type { import('styled-system').Theme } */
 const theme = {
-  breakpoints: [375, 1440],
+  breakpoints: [375, 768, 1440],
   colors: {
     primary: {
       cyan: '#2acfcf',
