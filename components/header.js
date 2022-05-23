@@ -28,6 +28,10 @@ export default function Header() {
 
 const Wrapper = styled.header`
   display: flex;
+  @media screen and (min-width: 768px) {
+    width: 800px;
+    margin: .8em auto;
+  }
 `
 const LinkWrapper = styled.div`
   display: flex;
