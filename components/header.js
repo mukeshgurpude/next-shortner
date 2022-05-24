@@ -18,10 +18,6 @@ export default function Header() {
     <Toggle open={open} toggle={() => setOpen(c => !c)} />
     <LinkWrapper>
       <ul>{ links.map((link, i) => <Link key={i} {...link} />) }</ul>
-      <ul>
-        <Link href='#'>Login</Link>
-        <Link href='#' variant='button'>Sign Up</Link>
-      </ul>
     </LinkWrapper>
   </Wrapper>
 }

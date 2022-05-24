@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { flex, layout } from 'styled-system'
 
-export default function Input() {
+export default function Input({ addLink }) {
   return <Wrapper>
-    <Landing width={1}>
+    <Landing>
       <h1>MORE THAN JUST SHORTER LINKS</h1>
       <ImageWrapper />
     </Landing>
@@ -20,7 +20,8 @@ const Landing = styled('div')({
   display: 'flex',
   justifyContent: 'space-around',
   padding: '0 1em',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  width: '100%'
 }, layout)
 
 const ImageWrapper = styled.div`
