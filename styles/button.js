@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, variant } from 'styled-system';
+import { color, space, variant } from 'styled-system';
 
 const Button = styled('button')({
   border: 'none',
@@ -7,7 +7,7 @@ const Button = styled('button')({
   fontWeight: 'bold',
   cursor: 'pointer',
   borderRadius: '.2rem'
-}, color, variant({
+}, color, space, variant({
   variants: {
     default: {
       bg: 'primary.cyan',

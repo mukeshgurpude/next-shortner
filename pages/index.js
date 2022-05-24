@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Banner from '../components/banner'
 import Input from '../components/input'
 import Showcase from '../components/showcase'
 import Stats from '../components/stats'
@@ -27,5 +28,6 @@ export default function Home() {
     <Input addLink={addLink} />
     <Showcase links={links} />
     <Stats/>
+    <Banner/>
   </>
 }

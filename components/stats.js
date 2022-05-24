@@ -37,7 +37,8 @@ const Desc = styled('p')(color)
 const Features = styled('div')(layout, {
   display: 'flex', gap: '3rem',
   padding: '.8rem', flexFlow: 'wrap',
-  justifyContent: 'space-around', position: 'relative'
+  justifyContent: 'space-around', position: 'relative',
+  paddingBottom: '3rem'
 })
 
 const FancyLine = styled.div`
