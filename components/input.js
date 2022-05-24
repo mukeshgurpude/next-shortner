@@ -84,7 +84,7 @@ const ImageWrapper = styled.div`
 `
 const FormWrapper = styled.div`
   width: 100%;
-  background: linear-gradient(to bottom, transparent 50%, #bfbfbf 50%);
+  background: linear-gradient(to bottom, transparent 50%, #F0F1F6 50%);
 `
 const Form = styled.form`
   background-image: url(/Meteor.svg);

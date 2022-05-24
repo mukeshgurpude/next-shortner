@@ -11,7 +11,8 @@ const theme = {
       gray: '#bfbfbf',
       violet: '#9e9aa7',
       blue: '#35323e',
-      dark_violet: '#232127'
+      dark_violet: '#232127',
+      bg: '#F0F1F6'
     }
   },
   fontWeights: [500, 700]

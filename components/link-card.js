@@ -37,11 +37,15 @@ const Wrapper = styled.div`
   }
 `
 const Original = styled.p`
+  width: 100%;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border-bottom: 2px solid #ccc;
   @media (min-width: 768px) {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
     width: 40%;
+    border-bottom: none;
   }
 `
 

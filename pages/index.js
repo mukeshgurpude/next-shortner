@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Input from '../components/input'
 import Showcase from '../components/showcase'
+import Stats from '../components/stats'
 
 
 export default function Home() {
@@ -25,5 +26,6 @@ export default function Home() {
   return <>
     <Input addLink={addLink} />
     <Showcase links={links} />
+    <Stats/>
   </>
 }

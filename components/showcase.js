@@ -3,7 +3,7 @@ import { color } from 'styled-system'
 import Card from './link-card'
 
 export default function Showcase({ links }) {
-  return <Wrapper bg='neutral.gray'>
+  return <Wrapper bg='neutral.bg'>
     <Container>{
     links.map(link => <Card key={link.code} {...link} />)
   }</Container></Wrapper>
