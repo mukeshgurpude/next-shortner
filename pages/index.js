@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Banner from '../components/banner'
+import Footer from '../components/footer'
 import Input from '../components/input'
 import Showcase from '../components/showcase'
 import Stats from '../components/stats'
