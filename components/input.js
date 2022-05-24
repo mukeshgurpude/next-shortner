@@ -18,11 +18,26 @@ function reducer(prevstate, action) {
 }
 
 export default function Input({ addLink }) {
-  const [ state, dispatch ] = useReducer(reducer, { error: 'Enter correct url', url: '' })
+  const [ state, dispatch ] = useReducer(reducer, { error: '', url: '' })
 
   function shorten_url(event) {
     event.preventDefault()
-    dispatch({ type: 'error', error: 'Test' })
+    const base_url = 'https://api.shrtco.de/v2'
+    const url = `${base_url}/shorten?url=${encodeURIComponent(state.url)}`
+
+    fetch(url, {method: 'POST'})
+      .then(res => res.json())
+      .then(data => {
+        if (!data.ok) {
+          return dispatch({ type: 'error', error: data.error })
+        }
+        console.log(data)
+        addLink(data.result)
+        dispatch({ type: 'reset' })
+      })
+      .catch(err => {
+        dispatch({ type: 'error', error: err.error || err.message })
+      })
   }
 
   return <Wrapper>
