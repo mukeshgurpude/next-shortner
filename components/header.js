@@ -11,13 +11,13 @@ const links = [
 ]
 
 export default function Header() {
-  const [ open, setOpen ] = useState(true)
+  const [open, setOpen] = useState(true)
 
   return <Wrapper>
-    <Image src='/logo.svg' alt='' width='150px' height='18px'/>
+    <Image src='/logo.svg' alt='' width='150px' height='18px' />
     <Toggle open={open} toggle={() => setOpen(c => !c)} />
     <LinkWrapper className={open ? 'active' : ''}>
-      <ul>{ links.map((link, i) => <Link key={i} {...link} />) }</ul>
+      <ul>{links.map((link, i) => <Link key={i} {...link} />)}</ul>
     </LinkWrapper>
   </Wrapper>
 }
@@ -43,7 +43,7 @@ const LinkWrapper = styled('div')({
     position: 'absolute',
     top: 30, zIndex: 998,
     height: 0, overflow: 'hidden',
-    '&>ul': {flexDirection: 'column'},
+    '&>ul': { flexDirection: 'column' },
     '&.active': {
       height: 'max-content',
     }

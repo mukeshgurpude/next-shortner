@@ -1,29 +1,21 @@
 import styled from 'styled-components'
 import { color, space, variant } from 'styled-system'
+import footer_links from '../data/footer_links'
 import Logo from './logo'
 import Social from './social'
-
-const footer_links = [{
-  heading: 'Features',
-  links: [{text: 'Link Shortening', href: '/'}, {text: 'Branded Links', href: '/'}, {text: 'Analytics', href: '/'}]
-}, {
-  heading: 'Resources',
-  links: [{text: 'Blog', href: '/'}, {text: 'Developers', href: '/'}, {text: 'Support', href: '/'}]
-}, {
-  heading: 'Company',
-  links: [{text: 'About', href: '/'}, {text: 'Our Team', href: '/'}, {text: 'Careers', href: '/'}, {text: 'Contact', href: '/'}]
-}]
 
 export default function Footer() {
   return <Wrapper bg='neutral.dark_violet'>
     <Logo fill='#fff' />
     <Social />
     <LinksContainer>{
-      footer_links.map(({heading, links}) => {
+      footer_links.map(({ heading, links }) => {
         return <LinksGroup key={heading}>
           <Heading>{heading}</Heading>
           <LinksList>{
-            links.map(({text, href}) => <Link variant='footer_link' key={text} href={href}>{text}</Link>)
+            links.map(
+              ({ text, href }) => <Link variant='footer_link' key={text} href={href}>{text}</Link>
+            )
           }</LinksList>
         </LinksGroup>
       })

@@ -1,40 +1,40 @@
 import { useReducer } from 'react'
 import styled from 'styled-components'
-import { color, layout, variant } from 'styled-system'
+import { color, layout } from 'styled-system'
 import Button from '../styles/button'
 
 function reducer(prevstate, action) {
-  switch(action.type) {
-    case 'input':
+  switch (action.type) {
+    case 'input': // Input element onchange
       return { ...prevstate, url: action.text, error: '' }
 
-    case 'error':
+    case 'error': // Error message
       return { ...prevstate, error: action.error, loading: false }
 
-    case 'reset':
+    case 'reset': // Reset form to initial state
       return { error: '', url: '', loading: false }
-    
-    case 'startLoading':
+
+    case 'startLoading':  // During API request
       return { ...prevstate, loading: true }
   }
   return prevstate
 }
 
 export default function Input({ addLink }) {
-  const [ state, dispatch ] = useReducer(reducer, { error: '', url: '', loading: false })
+  const [state, dispatch] = useReducer(reducer, { error: '', url: '', loading: false })
 
+  /** Form submit handler */
   function shorten_url(event) {
     event.preventDefault()
     const base_url = 'https://api.shrtco.de/v2'
     const url = `${base_url}/shorten?url=${encodeURIComponent(state.url)}`
     dispatch({ type: 'startLoading' })
-    fetch(url, {method: 'POST'})
+    fetch(url, { method: 'POST' })
       .then(res => res.json())
       .then(data => {
         if (!data.ok) {
           return dispatch({ type: 'error', error: data.error })
         }
-        console.log(data)
         addLink(data.result)
         dispatch({ type: 'reset' })
       })
@@ -61,9 +61,9 @@ export default function Input({ addLink }) {
 }
 
 const Wrapper = styled('div')({
-  textAlign: 'center',
-  '& h1': { zIndex: 2 }
+  textAlign: 'center', '& h1': { zIndex: 2 }
 }, layout)
+
 const Landing = styled('div')({
   display: 'flex',
   justifyContent: 'space-around',

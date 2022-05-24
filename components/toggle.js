@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { layout } from 'styled-system'
 
-export default function Toggle({ open=false, toggle }) {
+export default function Toggle({ open = false, toggle }) {
   return <Wrapper onClick={toggle}>
     <div></div>
     <div></div>

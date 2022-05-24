@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { color } from 'styled-system'
 
+/** Feature card component on homepage */
 export default function Feature({icon, heading, description}) {
   return <Wrapper>
     <Heading>{heading}</Heading>

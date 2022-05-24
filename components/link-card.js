@@ -11,14 +11,12 @@ export default function Card({ original_link, full_short_link }) {
     setCopied(true)
   }
 
-  useEffect(() => {
-    setTimeout(() => setCopied(false), 5000)
-  }, [copied])
+  useEffect(() => { setTimeout(() => setCopied(false), 5000) }, [copied])
 
   return <Wrapper>
     <Original>{original_link}</Original>
     <Anchor color='primary.cyan' href={full_short_link} target='_blank' rel='noreferrer' >{full_short_link}</Anchor>
-    <Button variant={copied ? 'active' : 'default'} onClick={copyToClipboard} style={{padding: '.5rem 1rem'}}>{ copied ? 'Copied' : 'Copy' }</Button>
+    <Button variant={copied ? 'active' : 'default'} onClick={copyToClipboard} style={{ padding: '.5rem 1rem' }}>{copied ? 'Copied' : 'Copy'}</Button>
   </Wrapper>
 }
 
@@ -36,6 +34,7 @@ const Wrapper = styled.div`
     flex-direction: column;
   }
 `
+
 const Original = styled.p`
   width: 100%;
   text-align: center;

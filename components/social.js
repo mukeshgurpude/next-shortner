@@ -8,10 +8,10 @@ const links = [
   { icon: '/icon-pinterest.svg', href: 'https://pinterest.com', text: 'Pinterest' },
 ]
 
-export default function Social({color='#fff', activeColor='primary.cyan'}) {
+export default function Social() {
   return <Wrapper>
     {
-      links.map(({icon, href, text}) => {
+      links.map(({ icon, href, text }) => {
         return <Icon key={text} href={href}>
           <Image src={icon} width={24} height={24} alt='' />
         </Icon>

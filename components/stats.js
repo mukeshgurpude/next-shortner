@@ -21,8 +21,8 @@ export default function Stats() {
     <Heading>Advanced Statistics</Heading>
     <Desc color='neutral.blue'>Track how your links are performing across the web with our advanced statistics Dashboard.</Desc>
     <Features>{
-        features.map((f, i) => <Feature key={i} {...f} />)
-      } <FancyLine bg='primary.cyan' />
+      features.map((f, i) => <Feature key={i} {...f} />)
+    } <FancyLine bg='primary.cyan' />
     </Features>
   </Wrapper>
 }
@@ -31,7 +31,7 @@ const Wrapper = styled('section')(color, {
   textAlign: 'center'
 })
 
-const Heading = styled('h2')({margin: '0', paddingTop: '1em'})
+const Heading = styled('h2')({ margin: '0', paddingTop: '1em' })
 const Desc = styled('p')(color)
 
 const Features = styled('div')(layout, {

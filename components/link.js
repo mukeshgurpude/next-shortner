@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { space, variant } from 'styled-system';
 
 
-export default function Link({ children, variant= 'default', href }) {
+export default function Link({ children, variant = 'default', href }) {
   return <StyledLink href={href} variant={variant} >{children}</StyledLink>
 }
 

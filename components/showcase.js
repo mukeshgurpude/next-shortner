@@ -5,8 +5,8 @@ import Card from './link-card'
 export default function Showcase({ links }) {
   return <Wrapper bg='neutral.bg'>
     <Container>{
-    links.map(link => <Card key={link.code} {...link} />)
-  }</Container></Wrapper>
+      links.map(link => <Card key={link.code} {...link} />)
+    }</Container></Wrapper>
 }
 
 const Wrapper = styled('div')({
