@@ -1,18 +1,48 @@
+import { useReducer } from 'react'
 import styled from 'styled-components'
-import { flex, layout } from 'styled-system'
+import { color, layout, variant } from 'styled-system'
+import Button from '../styles/button'
+
+function reducer(prevstate, action) {
+  switch(action.type) {
+    case 'input':
+      return { ...prevstate, url: action.text, error: '' }
+
+    case 'error':
+      return { ...prevstate, error: action.error }
+
+    case 'reset':
+      return { error: '', url: '' }
+  }
+  return prevstate
+}
 
 export default function Input({ addLink }) {
+  const [ state, dispatch ] = useReducer(reducer, { error: 'Enter correct url', url: '' })
+
+  function shorten_url(event) {
+    event.preventDefault()
+    dispatch({ type: 'error', error: 'Test' })
+  }
+
   return <Wrapper>
     <Landing>
       <h1>MORE THAN JUST SHORTER LINKS</h1>
       <ImageWrapper />
     </Landing>
-    <Form></Form>
+    <FormWrapper>
+      <Form onSubmit={shorten_url}>
+        <input type='url' value={state.url} placeholder='Shorten a link here...'
+          onChange={(e) => dispatch({ type: 'input', text: e.target.value })}
+          required className={state.error && 'error'} />
+        <Button variant='default' type='submit'>Shorten It!</Button>
+        {state.error && <Error color='secondary'>{state.error}</Error>}
+      </Form>
+    </FormWrapper>
   </Wrapper>
 }
 
 const Wrapper = styled('div')({
-  display: 'flex',
   textAlign: 'center',
   '& h1': { zIndex: 2 }
 }, layout)
@@ -34,4 +64,30 @@ const ImageWrapper = styled.div`
   max-width: 100%;
   margin: 0 auto;
 `
-const Form = styled.form``
+const FormWrapper = styled.div`
+  width: 100%;
+  background: linear-gradient(to bottom, transparent 50%, #bfbfbf 50%);
+`
+const Form = styled.form`
+  background-image: url(/Meteor.svg);
+  max-width: min(800px, 90vw);
+  padding: 2rem;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  & input {
+    width: min(90%, 600px);
+    padding: 1em;
+  }
+  & .error {
+    border: 2px solid red;
+  }
+`
+const Error = styled.p`
+  ${color}
+  display: block;
+  width: 100%;
+`

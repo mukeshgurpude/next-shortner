@@ -8,6 +8,6 @@ export default function Home() {
   }
 
   return <>
-    <Input />
+    <Input addLink={addLink} />
   </>
 }
