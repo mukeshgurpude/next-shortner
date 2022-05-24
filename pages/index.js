@@ -14,7 +14,7 @@ export default function Home() {
     const links = localStorage.getItem('links')
     if (links) {
       const parsed_links = JSON.parse(links)
-      parsed_links.push(new_link)
+      parsed_links.unshift(new_link)
       localStorage.setItem('links', JSON.stringify(parsed_links))
     } else {
       localStorage.setItem('links', JSON.stringify([new_link]))

@@ -9,22 +9,25 @@ function reducer(prevstate, action) {
       return { ...prevstate, url: action.text, error: '' }
 
     case 'error':
-      return { ...prevstate, error: action.error }
+      return { ...prevstate, error: action.error, loading: false }
 
     case 'reset':
-      return { error: '', url: '' }
+      return { error: '', url: '', loading: false }
+    
+    case 'startLoading':
+      return { ...prevstate, loading: true }
   }
   return prevstate
 }
 
 export default function Input({ addLink }) {
-  const [ state, dispatch ] = useReducer(reducer, { error: '', url: '' })
+  const [ state, dispatch ] = useReducer(reducer, { error: '', url: '', loading: false })
 
   function shorten_url(event) {
     event.preventDefault()
     const base_url = 'https://api.shrtco.de/v2'
     const url = `${base_url}/shorten?url=${encodeURIComponent(state.url)}`
-
+    dispatch({ type: 'startLoading' })
     fetch(url, {method: 'POST'})
       .then(res => res.json())
       .then(data => {
@@ -49,8 +52,8 @@ export default function Input({ addLink }) {
       <Form onSubmit={shorten_url}>
         <input type='url' value={state.url} placeholder='Shorten a link here...'
           onChange={(e) => dispatch({ type: 'input', text: e.target.value })}
-          required className={state.error && 'error'} />
-        <Button variant='default' type='submit'>Shorten It!</Button>
+          required className={state.error && 'error'} disabled={state.loading} />
+        <Button variant='default' type='submit' disabled={state.loading}>{state.loading ? 'Please wait' : 'Shorten It!'}</Button>
         {state.error && <Error color='secondary'>{state.error}</Error>}
       </Form>
     </FormWrapper>
