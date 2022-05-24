@@ -16,7 +16,7 @@ export default function Header() {
   return <Wrapper>
     <Image src='/logo.svg' alt='' width='150px' height='18px'/>
     <Toggle open={open} toggle={() => setOpen(c => !c)} />
-    <LinkWrapper>
+    <LinkWrapper className={open ? 'active' : ''}>
       <ul>{ links.map((link, i) => <Link key={i} {...link} />) }</ul>
     </LinkWrapper>
   </Wrapper>
@@ -29,14 +29,23 @@ const Wrapper = styled.header`
     margin: .8em auto;
   }
 `
-const LinkWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-
-  &>ul {
-    display: flex;
-    gap: 1em;
-    align-items: center;
+const LinkWrapper = styled('div')({
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'space-between',
+  '&>ul': {
+    display: 'flex',
+    gap: '1em',
+    alignItems: 'center',
+  },
+  '@media(max-width: 768px)': {
+    background: '#000',
+    position: 'absolute',
+    top: 30, zIndex: 998,
+    height: 0, overflow: 'hidden',
+    '&>ul': {flexDirection: 'column'},
+    '&.active': {
+      height: 'max-content',
+    }
   }
-`
+})

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, space } from 'styled-system'
+import { color, space, variant } from 'styled-system'
 import Logo from './logo'
 import Social from './social'
 
@@ -23,7 +23,7 @@ export default function Footer() {
         return <LinksGroup key={heading}>
           <Heading>{heading}</Heading>
           <LinksList>{
-            links.map(({text, href}) => <Link key={text} href={href}>{text}</Link>)
+            links.map(({text, href}) => <Link variant='footer_link' key={text} href={href}>{text}</Link>)
           }</LinksList>
         </LinksGroup>
       })
@@ -51,6 +51,15 @@ const LinksGroup = styled('div')({
 })
 const Heading = styled('h3')({ margin: 0 })
 const LinksList = styled('ul')({
-  display: 'flex', flexDirection: 'column', paddingLeft: 0
+  display: 'flex', flexDirection: 'column', paddingLeft: 0, gap: '.4rem'
 })
-const Link = styled('a')({})
+const Link = styled('a')(color, variant({
+  variants: {
+    footer_link: {
+      color: 'neutral.gray',
+      '&:hover': {
+        color: 'primary.cyan'
+      }
+    }
+  }
+}))
